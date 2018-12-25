@@ -20,7 +20,7 @@ Comment.propTypes = {
     }).isRequired
 }
 
-const mapStateToProps = () => {
+export default connect(() => {
     const commentSelector = commentSelectorFactory()
 
     return (state, ownProps) => {
@@ -28,6 +28,4 @@ const mapStateToProps = () => {
             comment: commentSelector(state, ownProps)
         }
     }
-}
-
-export default connect(mapStateToProps)(Comment)
+})(Comment)
