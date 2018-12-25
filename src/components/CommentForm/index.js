@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
 
 class CommentForm extends Component {
     static propTypes = {
-
+        articleId: PropTypes.string,
     };
 
     state = {
@@ -14,14 +14,14 @@ class CommentForm extends Component {
 
     render() {
         return (
-            <form onSubmit = {this.handleSubmit}>
-                user: <input value = {this.state.user}
-                             onChange = {this.handleChange('user')}
-                             className = {this.getClassName('user')} />
-                comment: <input value = {this.state.text}
-                                onChange = {this.handleChange('text')}
-                                className = {this.getClassName('text')} />
-                <input type = "submit" value = "submit"/>
+            <form onSubmit={this.handleSubmit}>
+                user: <input value={this.state.user}
+                             onChange={this.handleChange('user')}
+                             className={this.getClassName('user')}/>
+                comment: <input value={this.state.text}
+                                onChange={this.handleChange('text')}
+                                className={this.getClassName('text')}/>
+                <input type="submit" value="submit"/>
             </form>
         )
     }

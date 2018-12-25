@@ -6,11 +6,12 @@ const articlesIdGetter = (state, props) => props.id
 const commentsGetter = state => state.comments
 const idGetter = (state, props) => props.id
 
-export const filtratedArticlesSelector = createSelector(articlesGetter, filtersGetter, (articles, filters) => {
+export const filtratedArticlesSelectorFactory = createSelector(articlesGetter, filtersGetter, (articles, filters) => {
     const {selected, dateRange: {from, to}} = filters
-    console.log('---', 'recomputing filtration')
+    console.log('---', 'recomputing filtration', articles, filters)
 
     return articles.filter(article => {
+        console.log(article)
         const published = Date.parse(article.date)
         return (!selected.length || selected.includes(article.id)) &&
             (!from || !to || (published > from && published < to))

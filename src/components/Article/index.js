@@ -31,6 +31,7 @@ class Article extends PureComponent {
 
     render() {
         const {article, isOpen, toggleOpen} = this.props
+        console.log(article)
         return (
             <div ref={this.setContainerRef}>
                 <h3>{article.title}</h3>
@@ -66,11 +67,12 @@ class Article extends PureComponent {
     getBody() {
         const {article, isOpen} = this.props
         if (!isOpen) return null
+        console.log(article.comments)
         return (
             <section>
                 {article.text}
                 <button onClick={() => this.setState({updateIndex: this.state.updateIndex + 1})}>update</button>
-                <CommentList comments={article.comments} ref={this.setCommentsRef} key={this.state.updateIndex}/>
+                <CommentList comments={article.comments} articleId = {article.id} ref={this.setCommentsRef} key={this.state.updateIndex}/>
             </section>
         )
     }
